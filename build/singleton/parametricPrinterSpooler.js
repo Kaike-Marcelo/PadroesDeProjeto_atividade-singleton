@@ -1,4 +1,3 @@
-// import type { PrinterJob } from '../types.js';
 export class ParametricPrinterSpooler {
     constructor(name) {
         this.jobs = [];
@@ -12,13 +11,13 @@ export class ParametricPrinterSpooler {
         return ParametricPrinterSpooler.instances[name];
     }
     addJob(job) {
-        this.jobs.push(job);
+        this.jobs.unshift(job);
     }
     getNextJob() {
-        return this.jobs.shift();
+        return this.jobs.pop();
     }
     listAllJobs() {
-        return this.jobs;
+        return [...this.jobs];
     }
     clearJobs() {
         this.jobs = [];
